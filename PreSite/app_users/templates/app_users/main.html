@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+    <h3>Добро пожаловать на мой сайт {{ request.user.profile.nickname }}</h3>
+    <p>День Рождения: {{request.user.profile.date_of_birth}}</p>
+    <p>Город: {{request.user.profile.city}}</p>
+{% else %}
+    <h3>Вы не авторизированный на нашем сайте.</h3>
+    <a href="{% url 'login' %}">Войти</a>
+{% endif %}
+<h2>Я - главная страница</h2>
+</body>
+</html>
